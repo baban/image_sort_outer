@@ -22,6 +22,7 @@ pprint(folder_tags)
 
 # Get all txt and image files in the base directory
 txt_files = glob.glob(os.path.join(base_path, '*.txt'))
+print(txt_files)
 
 # 保存先のフォルダを決定する
 # 引数folder_tags以下は、以下の形式のハッシュになっている
@@ -43,8 +44,10 @@ def find_folder_by_tag(txt_file, folder_tags):
     return None
 
 def find_image_file(txt_file_path):
+    print("find_image_file")
     # ファイル名を取得
     base_name = os.path.basename(txt_file_path)
+    print(base_name)
     
     # 拡張子を変えたファイル名を生成
     name_without_ext, _ = os.path.splitext(base_name)
@@ -55,21 +58,32 @@ def find_image_file(txt_file_path):
     image_file_path = os.path.join(file_dir, image_file_name)
     
     if os.path.exists(image_file_path):
-        return image_file_path
+      return image_file_path
     
     # pngファイルがなければ、jpgファイルも探す
     image_file_name = name_without_ext + ".jpg"
     image_file_path = os.path.join(file_dir, image_file_name)
     
     if os.path.exists(image_file_path):
-        return image_file_path
+      return image_file_path
     
-    # pngファイルがなければ、jpgファイルも探す
     image_file_name = name_without_ext + ".jpeg"
     image_file_path = os.path.join(file_dir, image_file_name)
     
     if os.path.exists(image_file_path):
-        return image_file_path
+      return image_file_path
+
+    image_file_name = name_without_ext + ".webp"
+    image_file_path = os.path.join(file_dir, image_file_name)
+    
+    if os.path.exists(image_file_path):
+      return image_file_path
+
+    image_file_name = name_without_ext + ".gif"
+    image_file_path = os.path.join(file_dir, image_file_name)
+    
+    if os.path.exists(image_file_path):
+      return image_file_path
 
     # 見つからなかった場合はNoneを返す
     return None
@@ -79,10 +93,12 @@ for txt_file in txt_files:
   print(txt_file)
   folder = find_folder_by_tag(txt_file, folder_tags)
   print(folder)
-  img_file = find_image_file(txt_file)
-  print(img_file)
   if None == folder:
      folder = 'other'
+  img_file = find_image_file(txt_file)
+  print(img_file)
+  if None == img_file:
+    continue
   target_folder = os.path.join(base_path, folder)
   if not os.path.exists(target_folder):
     os.makedirs(target_folder)
