@@ -1,9 +1,13 @@
 import os
+import sys
 import glob
 import shutil
 from pprint import pprint
 
-base_path = "/mnt/e/cg/"
+print("")
+
+args = sys.argv
+base_path = args[0]
 script_path = os.path.dirname(os.path.abspath(__file__))
 folder_txt_path = os.path.join(script_path, "folder.txt")
 

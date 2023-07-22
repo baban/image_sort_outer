@@ -17,6 +17,6 @@ deepdanbooru evaluate /mnt/c/cg/*.{jpg,png,webp} --project-path ./train-data --s
 その状態で以下のコマンドを実行。
 
 ```sh
-python ./filter.py
+python ./filter.py /mnt/c/cg/
 ```
 

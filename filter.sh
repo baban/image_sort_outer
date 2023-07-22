@@ -1,0 +1,1 @@
+python ./filter.py /mnt/e/cg/
