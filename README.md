@@ -2,6 +2,16 @@
 
 ## 使い方
 
+## install方法
+
+```sh
+pip install deepdanbooru
+mkdir train-data
+```
+
+以下のURLから学習済データをダウンロードしてtrain-data ディレクトリに保存する。
+https://github.com/KichangKim/DeepDanbooru/releases
+
 ### 画像にタグを付与する
 
 `/mnt/c/cg/`以下に画像をおいている場合、deepdanbooruを使って、以下の様にして画像にタグを付与します。

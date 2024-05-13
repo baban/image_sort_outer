@@ -7,9 +7,11 @@ from pprint import pprint
 print("")
 
 args = sys.argv
-base_path = args[0]
+base_path = args[1]
 script_path = os.path.dirname(os.path.abspath(__file__))
+print(script_path)
 folder_txt_path = os.path.join(script_path, "folder.txt")
+print(folder_txt_path)
 
 # Read folder.txt to get folder names and corresponding tags
 def create_dic():
@@ -99,8 +101,8 @@ for txt_file in txt_files:
   print(folder)
   if None == folder:
      folder = 'other'
+
   img_file = find_image_file(txt_file)
-  print(img_file)
   if None == img_file:
     continue
   target_folder = os.path.join(base_path, folder)
